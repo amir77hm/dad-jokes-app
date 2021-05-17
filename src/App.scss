@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+// base style
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+// custom style
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #ffd900 0%,
+    #ffd900 50%,
+    #ff0048 50%,
+    #ff0048 100%
+  );
+}
+
+.JokeList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  height: 100vh;
+  position: relative;
+
+  .sidebar {
+    width: 30%;
+    background-color: #fff;
+    height: 80%;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1),
+      inset 0 1rem 3rem rgba(0, 0, 0, 0.06);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .joke-emoji {
+      background-color: #fff;
+      box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1),
+        inset 0 0.2rem 1rem rgba(0, 0, 0, 0.06);
+      border-radius: 50%;
+      margin: 4rem 0;
+      padding: 2rem;
+
+      i {
+        font-size: 6rem;
+      }
+    }
+
+    button {
+      font-size: 1.6rem;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffd900;
+      color: #000;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .content {
+    width: 70%;
+    height: 75%;
+    background-color: rgb(196, 255, 209);
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1),
+      inset 0 1rem 2rem rgba(0, 0, 0, 0.06);
+    border-radius: 0 1rem 1rem 0;
+    font-size: 1.2rem;
+    position: relative;
+
+    .jokes {
+      overflow-y: scroll;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: -17px;
+      bottom: 0;
+
+      .Joke {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .vote {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          i {
+            cursor: pointer;
+            font-size: 1.4rem;
+
+            &:last-child {
+              &:hover {
+                color: rgb(101, 255, 87);
+              }
+            }
+            &:first-child {
+              &:hover {
+                color: rgb(255, 87, 87);
+              }
+            }
+          }
+
+          &__num {
+            border-radius: 50%;
+            border-width: 3px;
+            border-style: solid;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.6rem;
+            font-size: 1.3rem;
+
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4),
+              inset 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+          }
+        }
+        .text {
+          padding: 0 2rem;
+          text-align: center;
+        }
+        .emoji {
+          i {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  padding: 0.6rem;
+
+  i {
+    font-size: 6rem;
+    animation: spin 2s infinite cubic-bezier(0, 0, 0, 0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
